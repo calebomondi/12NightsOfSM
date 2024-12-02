@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.27;
 
-contract NightOfCode {
+contract Greeting {
     string private message;
 
     constructor(string memory initialMessage) {

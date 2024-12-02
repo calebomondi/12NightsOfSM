@@ -3,7 +3,7 @@ import { ethers } from "hardhat";
 async function main() {
   const Greeting = await ethers.getContractFactory("Greeting");
   
-  const contract = await Greeting.deploy();
+  const contract = await Greeting.deploy("Hello World!");
   
   await contract.deploymentTransaction()?.wait();
   
