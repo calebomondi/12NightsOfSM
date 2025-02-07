@@ -1,18 +1,14 @@
-import { ethers } from "hardhat";
+import { ethers } from 'hardhat';
 
 async function main() {
-  const Greeting = await ethers.getContractFactory("Greeting");
-  
-  const contract = await Greeting.deploy("Hello World!");
-  
-  await contract.deploymentTransaction()?.wait();
-  
-  console.log(`Contract deployed to: ${await contract.getAddress()}`);
+  const mockERC20Token = await ethers.deployContract('MockERC20');
+
+  await mockERC20Token.waitForDeployment();
+
+  console.log('NFT Contract Deployed at ' + mockERC20Token.target);
 }
 
-main()
-.then(() => process.exit(0))
-.catch((error) => {
-    console.error(error);
-    process.exit(1);
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
 });
